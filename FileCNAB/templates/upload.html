@@ -1,3 +1,4 @@
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,9 +8,12 @@
     <title>upload</title>
   </head>
   <body>
-    <form method="post" enctype="multipart/form-data">
+    {% block content %}
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
       <input type="file" name="document" />
       <button type="submit">Upload File</button>
     </form>
+    {% endblock %}
   </body>
 </html>
