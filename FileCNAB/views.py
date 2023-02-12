@@ -52,9 +52,11 @@ def upload(request):
         data['hora'] = value[42:48]
         data['dono'] = value[48:62]
         data['loja'] = value[62:81]
-        
         operation = FileCNAB.objects.create(**data)
-
-  return render(request,'upload.html')
+        
+        context = FileCNAB.objects.all().first()
+        context = model_to_dict(context)
+        print(context)
+  return render(request,'upload.html', context)
 
   
